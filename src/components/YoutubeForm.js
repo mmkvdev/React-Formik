@@ -4,7 +4,7 @@ import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 // import { validate } from '../utils/validate';
 import { validationSchema } from '../utils/validationSchema';
-import {Formik, Form} from 'formik';
+import { Formik, Form, Field } from 'formik';
 
 /*
 
@@ -39,7 +39,7 @@ function YoutubeForm() {
     // console.log('Fields Touched', formik.touched);
 
     return (
-        <Formik 
+        <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
@@ -47,33 +47,33 @@ function YoutubeForm() {
             <Form>
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
-                    <input
+                    <Field
                         type='text'
                         id='name'
                         name='name'
-                        {... formik.getFieldProps('name')}
+                        {...formik.getFieldProps('name')}
                     />
                     {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
                 </div>
 
                 <div className="form-control">
                     <label htmlFor='email'>Email</label>
-                    <input
+                    <Field
                         type='email'
                         id='email'
                         name='email'
-                        {... formik.getFieldProps('email')}
+                        {...formik.getFieldProps('email')}
                     />
                     {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
                 </div>
 
                 <div className="form-control">
                     <label htmlFor='channel'>Channel</label>
-                    <input
+                    <Field
                         type='text'
                         id='channel'
                         name='channel'
-                        {... formik.getFieldProps('channel')}
+                        {...formik.getFieldProps('channel')}
                     />
                     {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
                 </div>
