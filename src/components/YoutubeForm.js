@@ -3,6 +3,7 @@ import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 import { validationSchema } from '../utils/validationSchema';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import TextError from './TextError';
 
 function YoutubeForm() {
     return (
@@ -20,7 +21,7 @@ function YoutubeForm() {
                         name='name'
                         placeholder='Enter Your Name'
                     />
-                    <ErrorMessage className='error' name='name' />
+                    <ErrorMessage name='name' component={TextError} />
                 </div>
 
                 <div className="form-control">
@@ -30,7 +31,17 @@ function YoutubeForm() {
                         id='email'
                         name='email'
                     />
-                    <ErrorMessage className='error' name='email' />
+                    <ErrorMessage name='email'>
+                        {
+                            (errorMsg) => {
+                                return (
+                                    <div className='error'>
+                                        {errorMsg}
+                                    </div>
+                                );
+                            }
+                        }
+                    </ErrorMessage>
                 </div>
 
                 <div className="form-control">
