@@ -5,6 +5,6 @@ export const validationSchema = Yup.object({
     email: Yup.string()
         .email('Invalid Email Format')
         .required('Required'),
-    channel: Yup.string().required('Required')
-
+    channel: Yup.string().required('Required'),
+    address: Yup.string().required('Address is Required Properly')
 })
