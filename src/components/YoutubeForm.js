@@ -2,7 +2,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
-import { validate } from '../utils/validate';
+// import { validate } from '../utils/validate';
+import { validationSchema } from '../utils/validationSchema';
 
 /*
 
@@ -24,7 +25,8 @@ function YoutubeForm() {
     const formik = useFormik({
         initialValues,
         onSubmit,
-        validate
+        // validate
+        validationSchema
     });
 
     // console.log('Form Values: formik.values gives access to the form data anytime ', formik.values);
@@ -33,7 +35,7 @@ function YoutubeForm() {
     // console.log('Form Errors', formik.errors);
 
     // logging the onBlur property - visited fields in the form
-    console.log('Fields Touched', formik.touched);
+    // console.log('Fields Touched', formik.touched);
 
     return (
         <div>
