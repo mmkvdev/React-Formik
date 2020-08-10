@@ -1,10 +1,10 @@
 import React from 'react';
-import { useFormik } from 'formik';
+// import { useFormik } from 'formik';
 import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 // import { validate } from '../utils/validate';
 import { validationSchema } from '../utils/validationSchema';
-import Formik from 'formik';
+import {Formik, Form} from 'formik';
 
 /*
 
@@ -44,7 +44,7 @@ function YoutubeForm() {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-            <form onSubmit={formik.handleSubmit}>
+            <Form>
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
                     <input
@@ -78,7 +78,7 @@ function YoutubeForm() {
                     {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
                 </div>
                 <button type="submit">Submit</button>
-            </form>
+            </Form>
         </Formik>
     )
 }
