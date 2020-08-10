@@ -18,6 +18,7 @@ function YoutubeForm() {
                         type='text'
                         id='name'
                         name='name'
+                        placeholder='Enter Your Name'
                     />
                     <ErrorMessage className='error' name='name' />
                 </div>
@@ -40,6 +41,34 @@ function YoutubeForm() {
                         name='channel'
                     />
                     <ErrorMessage className='error' name='channel' />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='comments'>Comments</label>
+                    <Field
+                        as='textarea'
+                        type='text'
+                        id='comments'
+                        name='comments'
+                    />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='address'>Comments</label>
+                    <Field name='address'>
+                        {
+                            (props) => {
+                                // console.log(props);
+                                const { field, form, meta } = props;
+                                return (
+                                    <div>
+                                        <input type='text' id='address' {...field} />
+                                        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                                    </div>
+                                )
+                            }
+                        }
+                    </Field>
                 </div>
                 <button type="submit">Submit</button>
             </Form>
