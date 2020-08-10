@@ -1,43 +1,10 @@
 import React from 'react';
-// import { useFormik } from 'formik';
 import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
-// import { validate } from '../utils/validate';
 import { validationSchema } from '../utils/validationSchema';
-import { Formik, Form, Field } from 'formik';
-
-/*
-
-    Managing form state ✔️
-    Handling form submission ✔️
-    Validation and error messages ✔️
-
-*/
-
-
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 function YoutubeForm() {
-
-    // takes object as it's parameter and returns an object that contains a variety of useful properties and methods that we can use with our forms(state, submissions, validation and error messages).
-
-    // onSubmit property automatically gets form state as it's argument
-
-    // ES6 shorthand syntax for object literals.
-    /*const formik = useFormik({
-        initialValues,
-        onSubmit,
-        // validate
-        validationSchema
-    });*/
-
-    // console.log('Form Values: formik.values gives access to the form data anytime ', formik.values);
-
-    //logging the error messages
-    // console.log('Form Errors', formik.errors);
-
-    // logging the onBlur property - visited fields in the form
-    // console.log('Fields Touched', formik.touched);
-
     return (
         <Formik
             initialValues={initialValues}
@@ -51,9 +18,8 @@ function YoutubeForm() {
                         type='text'
                         id='name'
                         name='name'
-                        {...formik.getFieldProps('name')}
                     />
-                    {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
+                    <ErrorMessage className='error' name='name' />
                 </div>
 
                 <div className="form-control">
@@ -62,9 +28,8 @@ function YoutubeForm() {
                         type='email'
                         id='email'
                         name='email'
-                        {...formik.getFieldProps('email')}
                     />
-                    {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
+                    <ErrorMessage className='error' name='email' />
                 </div>
 
                 <div className="form-control">
@@ -73,9 +38,8 @@ function YoutubeForm() {
                         type='text'
                         id='channel'
                         name='channel'
-                        {...formik.getFieldProps('channel')}
                     />
-                    {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
+                    <ErrorMessage className='error' name='channel' />
                 </div>
                 <button type="submit">Submit</button>
             </Form>
