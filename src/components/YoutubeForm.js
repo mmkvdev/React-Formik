@@ -8,7 +8,7 @@ import { validate } from '../utils/validate';
 
     Managing form state ✔️
     Handling form submission ✔️
-    Validation and error messages 
+    Validation and error messages ✔️
 
 */
 
@@ -32,7 +32,7 @@ function YoutubeForm() {
     //logging the error messages
     // console.log('Form Errors', formik.errors);
 
-    // logging the onBlur property
+    // logging the onBlur property - visited fields in the form
     console.log('Fields Touched', formik.touched);
 
     return (
@@ -48,7 +48,7 @@ function YoutubeForm() {
                         onBlur={formik.handleBlur}
                         value={formik.values.name}
                     />
-                    {formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
+                    {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
                 </div>
 
                 <div className="form-control">
@@ -61,7 +61,7 @@ function YoutubeForm() {
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
                     />
-                    {formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
+                    {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
                 </div>
 
                 <div className="form-control">
@@ -74,7 +74,7 @@ function YoutubeForm() {
                         onBlur={formik.handleBlur}
                         value={formik.values.channel}
                     />
-                    {formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
+                    {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
                 </div>
                 <button type="submit">Submit</button>
             </form>
