@@ -34,6 +34,7 @@ function YoutubeForm() {
                     <ErrorMessage name='email'>
                         {
                             (errorMsg) => {
+                                console.log(errorMsg)
                                 return (
                                     <div className='error'>
                                         {errorMsg}
@@ -51,7 +52,17 @@ function YoutubeForm() {
                         id='channel'
                         name='channel'
                     />
-                    <ErrorMessage className='error' name='channel' />
+                    <ErrorMessage name='channel'>
+                        {
+                            (channelErrorMsg) => {
+                                return (
+                                    <div className='error'>
+                                        {channelErrorMsg}
+                                    </div>
+                                )
+                            }
+                        }
+                    </ErrorMessage>
                 </div>
 
                 <div className="form-control">
@@ -71,10 +82,12 @@ function YoutubeForm() {
                             (props) => {
                                 // console.log(props);
                                 const { field, form, meta } = props;
+
+                                console.log(form)
                                 return (
                                     <div>
                                         <input type='text' id='address' {...field} />
-                                        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                                        {meta.touched && meta.error ? <div className='error'>{meta.error}</div> : null}
                                     </div>
                                 )
                             }
@@ -83,13 +96,13 @@ function YoutubeForm() {
                 </div>
 
                 <div className='form-control'>
-                        <label htmlFor='facebook'>Facebook Profile</label>
-                        <Field type='text' id='facebook' name='social.facebook'/>
+                    <label htmlFor='facebook'>Facebook Profile</label>
+                    <Field type='text' id='facebook' name='social.facebook' />
                 </div>
 
                 <div className='form-control'>
-                        <label htmlFor='twitter'>Twitter Profile</label>
-                        <Field type='text' id='twitter' name='social.twitter'/>
+                    <label htmlFor='twitter'>Twitter Profile</label>
+                    <Field type='text' id='twitter' name='social.twitter' />
                 </div>
 
                 <button type="submit">Submit</button>
