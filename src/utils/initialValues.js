@@ -7,5 +7,6 @@ export const initialValues = {
     social: {
         facebook: '',
         twitter: ''
-    }
+    },
+    phoneNumbers: ['','']
 };
