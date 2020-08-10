@@ -65,7 +65,7 @@ function YoutubeForm() {
                 </div>
 
                 <div className="form-control">
-                    <label htmlFor='address'>Comments</label>
+                    <label htmlFor='address'>Address</label>
                     <Field name='address'>
                         {
                             (props) => {
@@ -81,6 +81,17 @@ function YoutubeForm() {
                         }
                     </Field>
                 </div>
+
+                <div className='form-control'>
+                        <label htmlFor='facebook'>Facebook Profile</label>
+                        <Field type='text' id='facebook' name='social.facebook'/>
+                </div>
+
+                <div className='form-control'>
+                        <label htmlFor='twitter'>Twitter Profile</label>
+                        <Field type='text' id='twitter' name='social.twitter'/>
+                </div>
+
                 <button type="submit">Submit</button>
             </Form>
         </Formik>

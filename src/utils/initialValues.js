@@ -4,4 +4,8 @@ export const initialValues = {
     channel: '',
     comments: '',
     address: '',
+    social: {
+        facebook: '',
+        twitter: ''
+    }
 };
