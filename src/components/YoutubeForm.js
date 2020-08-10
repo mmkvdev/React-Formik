@@ -4,6 +4,7 @@ import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 // import { validate } from '../utils/validate';
 import { validationSchema } from '../utils/validationSchema';
+import Formik from 'formik';
 
 /*
 
@@ -22,12 +23,12 @@ function YoutubeForm() {
     // onSubmit property automatically gets form state as it's argument
 
     // ES6 shorthand syntax for object literals.
-    const formik = useFormik({
+    /*const formik = useFormik({
         initialValues,
         onSubmit,
         // validate
         validationSchema
-    });
+    });*/
 
     // console.log('Form Values: formik.values gives access to the form data anytime ', formik.values);
 
@@ -38,7 +39,11 @@ function YoutubeForm() {
     // console.log('Fields Touched', formik.touched);
 
     return (
-        <div>
+        <Formik 
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+        >
             <form onSubmit={formik.handleSubmit}>
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
@@ -74,7 +79,7 @@ function YoutubeForm() {
                 </div>
                 <button type="submit">Submit</button>
             </form>
-        </div>
+        </Formik>
     )
 }
 
