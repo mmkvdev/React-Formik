@@ -2,7 +2,7 @@ import React from 'react';
 import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 import { validationSchema } from '../utils/validationSchema';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import TextError from './TextError';
 
 function YoutubeForm() {
@@ -96,13 +96,13 @@ function YoutubeForm() {
                 </div>
 
                 <div className='form-control'>
-                        <label htmlFor='primaryPh'>Primary PhoneNumber</label>
-                        <Field type='text' id='primaryPh' name='phoneNumbers[0]'/>
+                    <label htmlFor='primaryPh'>Primary PhoneNumber</label>
+                    <Field type='text' id='primaryPh' name='phoneNumbers[0]' />
                 </div>
 
                 <div className='form-control'>
-                        <label htmlFor='secondaryPh'>Secondary PhoneNumber</label>
-                        <Field type='text' id='secondaryPh' name='phoneNumbers[1]'/>
+                    <label htmlFor='secondaryPh'>Secondary PhoneNumber</label>
+                    <Field type='text' id='secondaryPh' name='phoneNumbers[1]' />
                 </div>
 
                 <div className='form-control'>
@@ -113,6 +113,37 @@ function YoutubeForm() {
                 <div className='form-control'>
                     <label htmlFor='twitter'>Twitter Profile</label>
                     <Field type='text' id='twitter' name='social.twitter' />
+                </div>
+
+                <div className='form-control'>
+                    <label>List of Phone Numbers</label>
+                    <FieldArray name='phNumbers'>
+                        {
+                            // function as children - array and list manipulations  - array of field components
+                            (fieldArrayProps) => {
+                                console.log('fieldArrayProps', fieldArrayProps);
+
+                                const { push, remove, form } = fieldArrayProps;
+                                const { values } = form;
+                                const { phNumbers } = values;
+                                return (
+                                    <div>
+                                        {
+                                            phNumbers.map((phNumber, index) => (
+                                                <div key={index}>
+                                                    <Field name={`phNumbers[${index}]`} />
+                                                    {
+                                                        index > 0 && <button type='button' onClick={() => remove(index)}>{' '} - {' '}</button>
+                                                    }
+                                                    <button type='button' onClick={() => push('')}>{' '} + {' '}</button>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                )
+                            }
+                        }
+                    </FieldArray>
                 </div>
 
                 <button type="submit">Submit</button>
