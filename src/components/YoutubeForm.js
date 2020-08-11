@@ -2,7 +2,7 @@ import React from 'react';
 import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 import { validationSchema } from '../utils/validationSchema';
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik';
 import TextError from './TextError';
 
 function YoutubeForm() {
@@ -34,7 +34,7 @@ function YoutubeForm() {
                     <ErrorMessage name='email'>
                         {
                             (errorMsg) => {
-                                console.log(errorMsg)
+                                // console.log(errorMsg)
                                 return (
                                     <div className='error'>
                                         {errorMsg}
@@ -77,13 +77,14 @@ function YoutubeForm() {
 
                 <div className="form-control">
                     <label htmlFor='address'>Address</label>
-                    <Field name='address'>
+                    <FastField name='address'>
                         {
                             (props) => {
                                 // console.log(props);
+                                console.log('Field Render')
                                 const { field, form, meta } = props;
 
-                                console.log(form)
+                                // console.log(form)
                                 return (
                                     <div>
                                         <input type='text' id='address' {...field} />
@@ -92,7 +93,7 @@ function YoutubeForm() {
                                 )
                             }
                         }
-                    </Field>
+                    </FastField>
                 </div>
 
                 <div className='form-control'>
@@ -121,7 +122,7 @@ function YoutubeForm() {
                         {
                             // function as children - array and list manipulations  - array of field components
                             (fieldArrayProps) => {
-                                console.log('fieldArrayProps', fieldArrayProps);
+                                // console.log('fieldArrayProps', fieldArrayProps);
 
                                 const { push, remove, form } = fieldArrayProps;
                                 const { values } = form;
