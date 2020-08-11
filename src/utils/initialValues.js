@@ -8,5 +8,6 @@ export const initialValues = {
         facebook: '',
         twitter: ''
     },
-    phoneNumbers: ['','']
+    phoneNumbers: ['',''],
+    phNumbers: ['']
 };
