@@ -2,6 +2,7 @@ import React from 'react';
 import { initialValues } from '../utils/initialValues';
 import { onSubmit } from '../utils/onSubmit';
 import { validationSchema } from '../utils/validationSchema';
+import validateComments from '../utils/validateComments';
 import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik';
 import TextError from './TextError';
 
@@ -11,8 +12,6 @@ function YoutubeForm() {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
-            validateOnChange={false}
-            validateOnBlur={false}
         >
             <Form>
                 <div className="form-control">
@@ -74,7 +73,9 @@ function YoutubeForm() {
                         type='text'
                         id='comments'
                         name='comments'
+                        validate={validateComments}
                     />
+                    <ErrorMessage name='comments' component={TextError} />
                 </div>
 
                 <div className="form-control">
