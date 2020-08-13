@@ -167,7 +167,7 @@ function YoutubeForm() {
                                 comments: true,
                                 address: true
                             })}>Visit Fields</button>
-                            <button type="submit" disabled={!formik.isValid}>Submit</button>
+                            <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
                         </Form>
                     );
                 }
