@@ -12,6 +12,7 @@ function YoutubeForm() {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
+            // validateOnMount
         >
             {
                 formik => {
@@ -166,7 +167,7 @@ function YoutubeForm() {
                                 comments: true,
                                 address: true
                             })}>Visit Fields</button>
-                            <button type="submit">Submit</button>
+                            <button type="submit" disabled={!formik.isValid}>Submit</button>
                         </Form>
                     );
                 }
